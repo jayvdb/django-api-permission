@@ -29,11 +29,11 @@ class APIPermCheckMiddleware(MiddlewareMixin):
             except Token.DoesNotExist as e:
                 msg = f"api_permission checker: bearer token not exists: {e}"
                 logger.warning(msg)
-                return self._return_403_res(msg)
+                # return self._return_403_res(msg)
             except Exception as e:
                 msg = f"APIPermissionException : {e}"
                 logger.warning(msg)
-                return self._return_403_res(msg)
+                # return self._return_403_res(msg)
 
         logger.debug(f"header_token is:{header_token} user: {user}, method: {method}, path: {path}")
         if not path.startswith('/admin/') or not user.is_superuser:
